@@ -35,6 +35,7 @@ export class UserIP extends LitElement {
 
   // updated fires every time a property defined above changes
   // this allows you to react to variables changing and use javascript to perform logic
+  // this line below i know updates something but im not sure exactly how it works
   updated(changedProperties) {
     // this is looping over an array of values that's keyed by property name == the old value
     // this is because you could always write this.whatever if "whatever" is the property name in question
@@ -90,6 +91,7 @@ export class UserIP extends LitElement {
    * Async, so run this code in order though in this example
    * it'll run regardless since we're not doing other actions
    */
+  // the first part of the updateuserIP method is very confusing
   async updateUserIP() {
     return fetch(this.ipLookUp)
       .then(resp => {
@@ -100,6 +102,7 @@ export class UserIP extends LitElement {
       })
       .then(data => {
         this.ip = data.ip;
+        // This took me forever to mess around with but i think I understand
         this.location = data.city + " " + data.country;
         return data;
       });
@@ -110,6 +113,9 @@ export class UserIP extends LitElement {
   // it ensures that the code in the render() method
   // will be the only thing to get these styles applied
   // certain things can go in but the styles can't bleed out
+
+  // This whole part below with the css makes no sense to me
+  // i know its needed but idk why lol
   static get styles() {
     return [
       css`
@@ -137,6 +143,8 @@ export class UserIP extends LitElement {
   }
 
   // this serves very little purpose but at least we're rendering the info
+  //I do not under stand the class= part i know i put the varieabe in the correct place
+  // but am confused why the loaction wont show up on the second location tab
   render() {
     return html` <ul>
       <li><strong class="ipaddress">IP address:</strong> ${this.ip}</li>
